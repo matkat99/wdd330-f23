@@ -1,0 +1,7 @@
+#todoList {
+  max-width: 400px;
+}
+#todoList > li {
+  display: flex;
+  justify-content: space-between;
+}
