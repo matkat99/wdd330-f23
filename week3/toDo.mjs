@@ -1,12 +1,13 @@
 let todos = [];
 let outputEl = {};
+let localStorageKey = "todos";
 
 function saveTodos(todos) {
-  localStorage.setItem("todos", JSON.stringify(todos));
+  localStorage.setItem(localStorageKey, JSON.stringify(todos));
 }
 
 function getTodos() {
-  todos = JSON.parse(localStorage.getItem("todos")) || [];
+  todos = JSON.parse(localStorage.getItem(localStorageKey)) || [];
 }
 
 export function addTodo(todo) {
@@ -49,8 +50,10 @@ function handleTodoClick(e) {
   console.dir(e.currentTarget);
 }
 
-export default function toDo(selector) {
+export default function toDo(selector, key) {
   outputEl = document.querySelector(selector);
+  // if a key was passed in set it locally, otherwise use the default value ("todos")
+  if (key) localStorageKey = key;
   outputEl.insertAdjacentHTML("afterBegin", todoSetupTemplate());
   // add listener to button now that it exists
   document.querySelector("#addButton").addEventListener("click", addTodo);
