@@ -1,0 +1,40 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-size: 1.2em;
+}
+
+
+header {
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    background-color: #f2d79a;
+    padding: 1em;
+    width: 100vw;
+}
+
+
+.main-menu {
+    display: none;
+    list-style: none;
+    > li {
+        padding: 1em 0;
+    }
+}
+
+#menu-toggle {
+    display: none;
+    &:checked + .main-menu {
+        display: block;
+        position: fixed;
+        top: 50px;
+        bottom:0;
+        left:0;
+        right: 0;
+    }
+}

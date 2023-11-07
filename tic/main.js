@@ -8,7 +8,7 @@ function toggleMenu() {
 
 function handleResize() {
   const menu = document.querySelector(".menu");
-  if (window.innerWidth > 900) {
+  if (window.innerWidth > 1000) {
     menu.classList.remove("hide");
   } else {
     menu.classList.add("hide");
@@ -31,9 +31,11 @@ function closeViewer() {
 function viewHandler(event) {
   const target = event.target;
   console.dir(target);
+  const imgSrc = event.target.src.split("-");
+  const newSrc = imgSrc[0] + "-full.jpeg";
   document.body.insertAdjacentHTML(
     "afterbegin",
-    viewerTemplate(target.src, target.alt)
+    viewerTemplate(newSrc, target.alt)
   );
   // add listener to close modal
   document

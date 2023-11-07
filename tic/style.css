@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=family=Mooli&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Mooli&display=swap");
 
 :root {
   --primary-color: #52489c;
@@ -40,7 +40,7 @@ header {
   text-align: center;
 }
 .logo {
-  font-size: 2.5em;
+  font-size: 2em;
   margin-bottom: 0.2em;
   margin-top: 0;
 }
@@ -84,17 +84,28 @@ main {
   justify-content: center;
 }
 
+.gallery img {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  transition: all 0.3s;
+}
+.gallery img:hover {
+  transform: scale(1.2);
+}
+
 .viewer {
   position: absolute;
-  top: 10%;
-  left: 10%;
-  right: 10%;
-  bottom: 10%;
+  top: 0%;
+  left: 0%;
+  right: 0%;
+  bottom: 0%;
+  z-index: 10;
   margin: 0;
   background-color: rgba(0, 0, 0, 0.75);
   display: grid;
-  padding: 2em;
-  place-items: center;
+  padding: 0.5em;
+  justify-content: center;
   color: var(--text-light);
 }
 .viewer .close-viewer {
@@ -105,8 +116,9 @@ main {
   font-size: 1.2em;
 }
 .viewer img {
-  grid-row: 2/3;
-  place-self: center;
+  /* grid-row: 2/3; */
+  /* place-self: center; */
+  max-height: 100%;
 }
 figure > img {
   border: 8px solid white;
@@ -123,13 +135,13 @@ footer {
   display: none;
 }
 
-@media screen and (min-width: 500px) {
+@media screen and (min-width: 700px) {
   .gallery {
     grid-template-columns: 1fr 1fr;
   }
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 1000px) {
   header > nav,
   .gallery,
   main > h2,
@@ -149,5 +161,12 @@ footer {
     display: flex;
     justify-content: space-around;
     width: 100%;
+  }
+  .viewer {
+    top: 5%;
+    left: 5%;
+    right: 5%;
+    bottom: 5%;
+    padding: 3em;
   }
 }
