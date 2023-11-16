@@ -2,6 +2,7 @@
   import { userStore } from "./stores.mjs";
   import { getUserProfile, setUserProfile } from "./supabaseClient.mjs";
   let profile = {};
+  let message = "";
   const userId = $userStore.user.id;
   async function init() {
     profile = await getUserProfile(userId);
@@ -9,15 +10,21 @@
   }
   async function handleSubmit(e) {
     e.preventDefault();
-    const formData = new FormData(e.target);
-    const userProfile = {};
-    userProfile.website = formData.get("website");
-    userProfile.full_name = formData.get("full_name");
-    setUserProfile(userProfile, userId);
+
+    const error = await setUserProfile(profile, userId);
+    if (!error) {
+      message = "Profile Updated";
+    } else {
+      console.log(error);
+      message = error.message;
+    }
   }
   init();
 </script>
 
+{#if message}
+  <p>{message}</p>
+{/if}
 <h2>User Profile</h2>
 <form on:submit={handleSubmit}>
   <p>

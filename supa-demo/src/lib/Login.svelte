@@ -1,4 +1,6 @@
 <script>
+  import { signUp, login } from "./auth.mjs";
+  import { userStore } from "./stores.mjs";
   let email = "";
   let password = "";
   let loading = false;
@@ -8,6 +10,7 @@
     try {
       loading = true;
       // signup
+      signUp({ email, password });
       // if fails throw error
     } catch (err) {
       errorMessage = err;
@@ -20,6 +23,8 @@
     try {
       loading = true;
       // login
+      login({ email, password });
+
       // if fails throw error
     } catch (err) {
       errorMessage = err;
